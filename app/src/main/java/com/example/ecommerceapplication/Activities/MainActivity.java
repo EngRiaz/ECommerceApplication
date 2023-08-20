@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.os.Bundle;
 
 import com.example.ecommerceapplication.Adapters.CategoryAdapter;
+import com.example.ecommerceapplication.Adapters.ProductAdapter;
 import com.example.ecommerceapplication.ModelClasses.Category;
+import com.example.ecommerceapplication.ModelClasses.ProductClass;
 import com.example.ecommerceapplication.R;
 import com.example.ecommerceapplication.databinding.ActivityMainBinding;
 
@@ -17,13 +19,21 @@ public class MainActivity extends AppCompatActivity {
     CategoryAdapter categoryAdapter;
     ArrayList<Category> categories;
 
+    ProductAdapter productAdapter;
+    ArrayList<ProductClass> productClass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+      initCategory();
+      initProducts();
 
+
+    }
+    void initCategory(){
         categories=new ArrayList<>();
         categories.add(new Category("Sports & Outdoor","","#18ab4e","Some Description",1));
         categories.add(new Category("Sports & Outdoor","","#F03109","Some Description",2));
@@ -40,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         binding.categoriesList.setLayoutManager(layoutManager);
 
         binding.categoriesList.setAdapter(categoryAdapter);
+    }
+    void  initProducts(){
 
     }
 }
