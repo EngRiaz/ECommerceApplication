@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Category> categories;
 
     ProductAdapter productAdapter;
-    ArrayList<ProductClass> productClass;
+    ArrayList<ProductClass> products;
 
 
     @Override
@@ -52,6 +52,28 @@ public class MainActivity extends AppCompatActivity {
         binding.categoriesList.setAdapter(categoryAdapter);
     }
     void  initProducts(){
+        products  = new ArrayList<>();
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,1));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,2));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,3));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,4));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,5));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,6));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,7));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,8));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,9));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,10));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,6));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,6));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,6));
+        products.add(new ProductClass("Samsung S23 Ultra","https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600","READY STOCK",22,12,2,6));
+        productAdapter=new ProductAdapter(this,products);
+
+        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
+
+        binding.productList.setLayoutManager(layoutManager);
+        binding.productList.setAdapter(productAdapter);
+
 
     }
 }
