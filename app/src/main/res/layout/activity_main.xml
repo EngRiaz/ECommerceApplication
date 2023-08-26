@@ -22,8 +22,8 @@
             style="@style/MaterialSearchBarLight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:mt_hint="Search your favorite product"
-            app:mt_placeholder="aExpress"
+            app:mt_hint="Search your product"
+            app:mt_placeholder="E Commerce"
             app:mt_navIconEnabled="true"
             app:mt_maxSuggestionsCount="10"
             app:mt_speechMode="true" />
