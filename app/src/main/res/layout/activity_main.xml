@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E3E3E8"
     tools:context=".Activities.MainActivity">
 
     <LinearLayout
@@ -32,7 +33,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +54,9 @@
                     android:id="@+id/carousel"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    app:showNavigationButtons="false"
-                    app:showCaption="false"
-                    app:autoPlay="true"/>
+                    app:autoPlay="true"
+                    app:showCaption="true"
+                    app:showNavigationButtons="false" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -70,14 +70,15 @@
                     android:id="@+id/categoriesList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
+                    android:layout_marginTop="10dp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="10dp"
+               />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

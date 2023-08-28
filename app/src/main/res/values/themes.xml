@@ -5,5 +5,9 @@
         <item name="colorPrimary">@color/orange</item>
     </style>
 
-    <style name="Theme.ECommerceApplication" parent="Base.Theme.ECommerceApplication" />
+
+    <style name="Base.Theme.Actionbar" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/orange</item>
+    </style>
 </resources>

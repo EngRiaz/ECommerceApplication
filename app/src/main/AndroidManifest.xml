@@ -12,11 +12,12 @@
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ECommerceApplication"
+        android:theme="@style/Base.Theme.ECommerceApplication"
         tools:targetApi="31">
         <activity
             android:name=".Activities.ProductDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Base.Theme.Actionbar"/>
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true">
