@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,15 +18,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.ecommerceapplication.ModelClasses.ProductClass;
 import com.example.ecommerceapplication.R;
 import com.example.ecommerceapplication.Utils.Constants;
 import com.example.ecommerceapplication.databinding.ActivityProductDetailsBinding;
+import com.hishd.tinycart.model.Cart;
+import com.hishd.tinycart.util.TinyCartHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProductDetailsActivity extends AppCompatActivity {
     ActivityProductDetailsBinding binding;
+    ProductClass currentProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getProductDetails(id);
         getSupportActionBar().setTitle(name);
+        Cart cart = TinyCartHelper.getCart();
+        binding.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                cart.addItem(currentProduct,1);
+
+            }
+        });
     }
 
     @Override
@@ -64,13 +78,24 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject object=new JSONObject(response);
-                    if(object.getString("status").equals("success"))
-                    {
-                        JSONObject product= object.getJSONObject("product");
-                        String description=product.getString("description");
+                    JSONObject object = new JSONObject(response);
+                    JSONObject product = null;
+                    if (object.getString("status").equals("success")) {
+                        product = object.getJSONObject("product");
+                        String description = product.getString("description");
                         binding.txtProductDetails.setText(Html.fromHtml(description));
                     }
+                    currentProduct = new ProductClass(
+                            product.getString("name"),
+                            Constants.PRODUCTS_IMAGE_URL + product.getString("image"),
+                            product.getString("status"),
+                            product.getDouble("price"),
+                            product.getDouble("price_discount"),
+                            product.getInt("stock"),
+                            product.getInt("id")
+
+
+                    );
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

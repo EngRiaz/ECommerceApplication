@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.ecommerceapplication"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -66,5 +66,6 @@ dependencies {
     implementation ("com.github.mancj:MaterialSearchBar:0.8.5")
 
     implementation("com.android.volley:volley:1.2.1")
+    implementation ("com.github.hishd:TinyCart:1.0.1")
 
 }
