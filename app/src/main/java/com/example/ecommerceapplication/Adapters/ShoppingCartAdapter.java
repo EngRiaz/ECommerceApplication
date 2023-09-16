@@ -7,11 +7,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ecommerceapplication.Activities.ShoppingCartActivity;
 import com.example.ecommerceapplication.ModelClasses.ProductClass;
 import com.example.ecommerceapplication.R;
 import com.example.ecommerceapplication.databinding.ItemCartBinding;
@@ -59,21 +61,41 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 quantityDialogBinding.productStock.setText("Stock :"+productClass.getStock());
                 quantityDialogBinding.quantity.setText(String.valueOf(productClass.getQuantity()));
                 int stock =productClass.getStock();
+
                 quantityDialogBinding.plusBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int quantity=productClass.getQuantity();
+                        quantity ++;
+                        if(quantity>productClass.getStock()){
+                            Toast.makeText(context, "Max Stock Available : "+ productClass.getStock(), Toast.LENGTH_SHORT).show();
+                        return;
+                        }
+                        else{
+                            productClass.setQuantity(quantity);
 
-                    }
+                            quantityDialogBinding.quantity.setText(String.valueOf(quantity));
+                        }
+                                          }
                 });
                 quantityDialogBinding.minusBtn.setOnClickListener(new View.OnClickListener() {
                      @Override
                     public void onClick(View v) {
+                         int quantity=productClass.getQuantity();
+                         if(quantity>1){
+                             quantity --;
+                             productClass.setQuantity(quantity);
+
+                             quantityDialogBinding.quantity.setText(String.valueOf(quantity));
+                         }
 
                     }
                 });
                 quantityDialogBinding.saveBtn .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dialog.dismiss();
+                        notifyDataSetChanged();
 
                     }
                 });
